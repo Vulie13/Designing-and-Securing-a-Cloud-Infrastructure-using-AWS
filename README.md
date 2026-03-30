@@ -1,11 +1,11 @@
 # Designing-and-Securing-a-Cloud-Infrastructure-using-AWS
-PROJECTNAME
-Objective
-[Brief Objective - Remove this afterwards]
 
-The Detection Lab project aimed to establish a controlled environment for simulating and detecting cyber attacks. The primary focus was to ingest and analyze logs within a Security Information and Event Management (SIEM) system, generating test telemetry to mimic real-world attack scenarios. This hands-on experience was designed to deepen understanding of network security, attack patterns, and defensive strategies.
+## Objective
 
-Skills Learned
+The aim of this project is to design and secure a cloud Infrastructure using Amazon Web Services that is capable of hosting Websites or web applications. Enhance security and compliance on the infrastructure and capabable for high availability and resilience of the infrastructure. This hands-on experience was designed to deepen understanding of cloud and security services offered by AWS.
+
+
+## Skills Learned
 [Bullet Points - Remove this afterwards]
 
 Advanced understanding of SIEM concepts and practical application.
@@ -13,7 +13,8 @@ Proficiency in analyzing and interpreting network logs.
 Ability to generate and recognize attack signatures and patterns.
 Enhanced knowledge of network protocols and security vulnerabilities.
 Development of critical thinking and problem-solving skills in cybersecurity.
-Tools Used
+
+## Service Used
 [Bullet Points - Remove this afterwards]
 
 Security Information and Event Management (SIEM) system for log ingestion and analysis.
