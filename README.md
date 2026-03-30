@@ -6,13 +6,12 @@ The aim of this project is to design and secure a cloud Infrastructure using Ama
 
 
 ## Skills Learned
-[Bullet Points - Remove this afterwards]
+- Cloud Architecture & Design
+- Network Security
+- Identity & Access Management (IAM)
+- Application Security
 
-Advanced understanding of SIEM concepts and practical application.
-Proficiency in analyzing and interpreting network logs.
-Ability to generate and recognize attack signatures and patterns.
-Enhanced knowledge of network protocols and security vulnerabilities.
-Development of critical thinking and problem-solving skills in cybersecurity.
+
 
 ## Service Used
 
@@ -25,6 +24,9 @@ Development of critical thinking and problem-solving skills in cybersecurity.
 - Web Application Firewall (WAF)
 - AWS Certificate Manager (ACM)  
 - Multi Availability Zone
+- Acess Control list (ACL)
+- Network Acess Control List (NACL)
+- Security Groups
 
 ## Step 1: Cloud Architecture
 Cloud Architecture
