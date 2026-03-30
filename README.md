@@ -38,7 +38,7 @@ Figure 1. AWS Cloud Architecture
 
 Figure 1 shows the AWS Cloud architecture design to be implemented. The architecture has a Virtual Private Cloud which will allow the resources to be launched within it. The core service being an EC2 (Webserver) and RDS MySQL Database. The architecture consists of 2 Availability Zone, 4 Subnets (Public & Private), Security groups (for the webserver and database) and the services like Internet Gateway, Route 53, Elastic load Balancing and EC2 Auto Scaling. The security features are IAM, MFA, Web Application Firewall, SSL/TLS Certificate and Network Access control list.   
 
-4.2 Region 
+### Region 
 
 In Figure 2, Stockholm (eu-north-1) is the region selected because it is close to the location where the infrastructure is intended for use. This also results in lower costs for the use of services
 
@@ -46,7 +46,7 @@ In Figure 2, Stockholm (eu-north-1) is the region selected because it is close t
 
 Figure 2.Region
 
-4.3 Setting up AWS Virtual Network
+## Step 2:  Setting up AWS Virtual Network
 
 In Figure 3, a VPC is created to serve as a logical virtual network that makes it possible to launch other AWS resources within it. The IPv4 Classless Inter Domain Routing (CIDR) network block for this VPC is 10.0.0.0/16. This subset can be used to construct subnets.
 
@@ -55,7 +55,7 @@ In Figure 3, a VPC is created to serve as a logical virtual network that makes i
 Figure 3. Create VPC
 
 
-4.3.2 Create Subnets (Public & Private) 
+### Create Subnets (Public & Private) 
 
 In Figure 4, Two subnets are created within the VPC. Public Subnet named PublicSubnet1-spidertech and Private subnet named PrivateSubnet1-Spidertech. Public subnets interact with the outside network of the infrastructure while the private subnet only interacts within the infrastructure e.g. between the webserver and database. The availability zone selected is Europe (Stockholm)/eun1-az1(eu-north-1a). PublicSubnet1-spidertech is allocated the Ip address 10.0.0.0/24. 
 
@@ -70,7 +70,7 @@ In Figure 5, the same configuration as figure 4 are configure but for the Privat
 
 Figure 5.Subnet Settings: Private Subnet
 
-4.3.3 Setup Internet Gateway (IGW) 
+### Setup Internet Gateway (IGW) 
 
 In Figure 6, the internet gateway named IGW-SpiderTech is created and allows internet access
 
@@ -79,7 +79,7 @@ In Figure 6, the internet gateway named IGW-SpiderTech is created and allows int
 Figure 6: Create Internet Gateway
 
 
-4.3.4 Attach VPC to Internet Gateway 
+### Attach VPC to Internet Gateway 
 
 In Figure 7, the VPC is attached to the IGW to allow communicate with internet
 
@@ -87,7 +87,7 @@ In Figure 7, the VPC is attached to the IGW to allow communicate with internet
 
 Figure 7. Attach IGW to VPC
 
-4.3.5 Create Route Tables (Public & Private) 
+### Create Route Tables (Public & Private) 
 
 In Figure 8, Route tables specify how packets are forwarded between subnets within the VPC and internet. Public- RT-Spidertech name tag is created for the public route table and attached to the VPC-Spidertech.
 
@@ -95,7 +95,7 @@ In Figure 8, Route tables specify how packets are forwarded between subnets with
  
 Figure 8. Create Route Table
 
-4.3.6 Edit Public Route Table 
+### Edit Public Route Table 
 
 In Figure 9, Ipv4 0.0.0.0/0 is selected as the destination allowing all addresses to be forwarded to the targeted Internet Gateway (IGW-SpiderTech)
 
@@ -105,7 +105,7 @@ In Figure 9, Ipv4 0.0.0.0/0 is selected as the destination allowing all addresse
 Figure 9. Edit Public Route Table
 
 
-4.3.7 Attach Public Subnet to Public Route Table 
+### Attach Public Subnet to Public Route Table 
 
 In Figure 10, the route table specifies the route of how the public subnet packets are forward by association with the public route table
 
@@ -113,7 +113,7 @@ In Figure 10, the route table specifies the route of how the public subnet packe
  
 Figure 10. Attach Public Subnet to Public Route Table
 
-4.3.8 Attach Private Subnet to Private Route Table 
+### Attach Private Subnet to Private Route Table 
 
 In Figure 11, the route table specifies the route of how the private subnet packets are forward by association with the private route table
 
@@ -122,7 +122,7 @@ In Figure 11, the route table specifies the route of how the private subnet pack
 Figure 11. Attach Private Subnet to Private Route Table
 
 
-4.3.9 Create Security Groups (Webserver) 
+### Create Security Groups (Webserver) 
 
 In figure 12, webserver security group is created to control inbound and outbound traffic by adding rules for which Protocols/Ports are given access or not. The security group Webserver-SG allow http & SSH Protocol connection and is attached to VPC-Spidertech. Inbound rules are then configured to only allow Http & SSH traffic into the EC2 webserver from any destination and all IP address
 
@@ -130,7 +130,7 @@ In figure 12, webserver security group is created to control inbound and outboun
 
 Figure 12. Create Security Groups
 
-4.3.10 Outbound rule 
+### Outbound rule 
 
 In figure 13, the outbound rules allow all traffic, Protocols and port numbers from webserver to move out to all different destinations and IP addresses.
 
@@ -138,7 +138,7 @@ In figure 13, the outbound rules allow all traffic, Protocols and port numbers f
 
 Figure 13. Outbound Rules
 
-4.4 Launching and Configuring Elastic Cloud Compute (EC2) 
+## Step 3 : Launching and Configuring Elastic Cloud Compute (EC2) 
 
 In figure 14, virtual machine named spidertech-webserver is launched installed with an Operating System (Amazon Linux) running on a 2023 kernel 6-12 Amazon Machine Image, instance type t3.micro, self-generated keypair for security access, attached to the Spidertech-VPC and Webserver Security Group. 8 Gb storage with 3gp root volume
 
@@ -159,7 +159,7 @@ In figure 16, Select existing security group and choose Webserver-SG. The storag
  
 Figure 16. Launch Instance: Security Group & Configure Storage
 
-4.4.1 Connect to EC2
+### Connect to EC2
 
 In figure 17, Tick on Webserver-Spidertech, under actions click “connect to ec2 instance”. Select connect type “Connect using a Public IP” and public IPV4 address which is automatically assigned then click connect.
 
@@ -174,23 +174,23 @@ In figure 18, The Linux Operating System is running successfully
 Figure 18. EC2 Running Linux OS
 
 
-4.5 Installing & Configuring WordPress
+## Step 4 : Installing & Configuring WordPress
 
-a)	Update and upgrade packages 
+#### a)	Update and upgrade packages 
 Command: Sudo yum update (Figure 19)
 
 <img width="680" height="239" alt="image" src="https://github.com/user-attachments/assets/89a9d56b-f90f-4292-aa97-8f10478f5f25" />
  
 Figure 19. Update & Upgrade Linux Packages
 
-b)	install Apache Web server 
+#### b)	install Apache Web server 
 Command: Sudo yum install httpd -y (Figure 20)
 
  <img width="1031" height="753" alt="image" src="https://github.com/user-attachments/assets/b9b05bea-4e12-4eaa-8436-851babae64ec" />
 
 Figure 20. Apache Installation
 
-c)	Install PHP and MySQL 
+#### c)	Install PHP and MySQL 
 
 Command: Sudo yum install -y MySQL & Sudo dnf install-y httpd mariadb105-server php php-mysqlnd (Figure 21)
 
@@ -198,14 +198,14 @@ Command: Sudo yum install -y MySQL & Sudo dnf install-y httpd mariadb105-server 
  
 Figure 21. PHP & MySQL Installation
 
-d)WordPress Setup 
+#### d)WordPress Setup 
 Command: Sudo wget https://wordpress.org/lastest.tar.gz (Figure 22)
 
  <img width="832" height="404" alt="image" src="https://github.com/user-attachments/assets/971f5891-ae5b-4e85-8288-44d18358c7f6" />
 
 Figure 22. Verifying PHP & MySQL Installation
 
-d)	Create WordPress Database on EC2 Webserver
+#### e)	Create WordPress Database on EC2 Webserver
 Command: export MYSQL_HOST=database-2.cpaiqgcwoe2t.eu-central-1.rds.amazonaws.com (Figure 23)
 
  <img width="954" height="339" alt="image" src="https://github.com/user-attachments/assets/d9a79ff9-2f26-4b2c-b98c-ffe3096b9d52" />
@@ -214,7 +214,7 @@ Figure 23. Export MySQL Database to EC2
 
 
 
-4.5.2 Second set of Subnets
+### Second set of Subnets
 
 In Figure 24, Two extra subnets are created within the VPC. Public Subnet named PublicSubnet2-spidertech and Private subnet named PrivateSubnet2-Spidertech.The availability zone selected is Europe (Stockholm)/eun1-az1(eu-north-1b). PublicSubnet1-spidertech is allocated the Ip address 10.0.2.0/24. PrivateSubnet1-spidertech is allocated the ip address 10.0.3.0/24. PrivateSubnet2 is created in order to make avail a second Availability zone which is required for configuring an RDS Database.
 
@@ -229,7 +229,7 @@ In Figure 25, Attach PrivateSubnet2-Spidertech subnet to the Private Route table
 
 Figure 25. Attach Private Subnet to Private Route Table
 
-4.6 Create RDS Database subnet Group 
+## Step 5 :  Create RDS Database subnet Group 
 
 In Figure 26, The name tag created is Spidertech-DB-SubnetGroup and this is to control the inbound and out bound traffic to and from the RDS database. Selected VPC-Spidertech and Attached to 2 availability zone (eu-north-1a and eu-north-1b) and both private subnets (PrivateSubnet1-Spidertech and PrivateSubnet2-Spidertech) because it’s a requirement for creating a database security group
 
@@ -238,7 +238,7 @@ In Figure 26, The name tag created is Spidertech-DB-SubnetGroup and this is to c
 Figure 26. Create RDS Database Subnet Group
 
 
-4.6.2 Create RDS Database as a MySQL engine
+### Create RDS Database as a MySQL engine
 
 In Figure 27, Creating method used to create the database is Standard with a MySQL engine type.
 
@@ -247,7 +247,7 @@ In Figure 27, Creating method used to create the database is Standard with a MyS
 Figure 27. Create RDS Database
 
 
-4.6.2 Create Security Groups (RDS Database) 
+### Create Security Groups (RDS Database) 
 
 In figure 28, the security group control inbound and outbound traffic by adding rules for which Protocols/Ports are given access or not. The security group RDS Database is created to   allow http & SSH Protocol connection and attached to VPC-Spidertech. Inbound rule allows only the web-security group to access database-security group for MySQL protocol/Type
 
@@ -261,7 +261,7 @@ In Figure 29, Inbound rule for the DB security group allows only the web-securit
 
 Figure 29. Edit RDS Inbound Rules
 
-4.6.3 Configure the WordPress Database on EC2
+### Configure the WordPress Database on EC2
 
  In Figure 30, Define DB name, Db user, Db password and DB host information
  
@@ -281,7 +281,7 @@ In Figure 32, WordPress Web application running successfully
 
 Figure 32. Running Web Application
 
- 4.7 Create Second EC2 for redundancy 
+## Step 6:  Create Second EC2 for redundancy 
 
 In Figure 33, Stop EC2 instance, select Actions, click instance settings and click “create image”
 
@@ -295,7 +295,7 @@ In Figure 34, Select Amazon Machine Imagine (AMI) from search bar and name tag �
  
 Figure 34. Launching an AMI
 
-4.7.1 Create a Launch Template 
+### Create a Launch Template 
 
 In Figure 34, This template create/replicates a saved Ec2 instance that can be launched and reused. Without the need to configure another EC2 instance with the same configurations. Tag name “Spidertech-Web-App-AMI” with a description 
 
@@ -315,6 +315,7 @@ In Figure 37, Select a t3.micro instance type, spidertech-keypair to be able to 
 
 Figure 37. Create a Launch Template: Instance type, Key Pair, Network Settings
 
+
 In Figure 38, Under user data the commands are enter into the field in order for the template to automatically start when required
 
 - #!/bin/bash
@@ -328,7 +329,8 @@ In Figure 38, Under user data the commands are enter into the field in order for
 Figure 38.Create a Launch Template: Bash Command
 
 
-4.7.2 Create Auto-Scaling Group
+
+### Create Auto-Scaling Group
 
 Launch template: Name tag is Spidertech-ASG and set Default version 1 then Next (Figure 39)
 
@@ -336,11 +338,13 @@ Launch template: Name tag is Spidertech-ASG and set Default version 1 then Next 
 
 Figure 39. Create Auto-Scaling Group
 
+
 Launch Options: Choose VPC-Spidertech and select both Public Subnets with Availability Zones eu-north-1a & 1b. The distributions of the Availability Zone set to “Balanced best effort” for automatic balance on the instances. (Figure 40)
  
  <img width="863" height="585" alt="image" src="https://github.com/user-attachments/assets/51c5ad05-58bf-49bb-9c9a-7465dfa7c179" />
 
 Figure 40. Create Auto-Scaling Group: Instance Launch Option
+
 
  No load balancer because it has not been created yet (Figure 41)
  
@@ -348,11 +352,13 @@ Figure 40. Create Auto-Scaling Group: Instance Launch Option
  
 Figure 41. Create Auto-Scaling Group: Load Balancing
 
+
 In Figure 42, Desired capacity for instance always running idle is set to 2 for the group size. Under Scaling, Min desired capacity for increment is set to 1 and maximum instance to run is 4 
 
  <img width="854" height="587" alt="image" src="https://github.com/user-attachments/assets/ec3ca8aa-893e-4c01-9787-0f2c5d44f34b" />
 
 Figure 42. Create Auto-Scaling Group: Configure Group Size & Scaling
+
 
 In Figure 43, adding a notification via email depending on the event type (optional)
 
@@ -367,7 +373,8 @@ In Figure 44, shows 2 successful instances running
  
 Figure 44. Successful Auto Scaling Activity
 
-4.7.3 Create Target Group: Loading Balancing
+
+### Create Target Group: Loading Balancing
 
 In Figure 45, First Create Target group then select target type for the resource, which is “instance”. Application Load Balancing is most suited for the instance. This helps by launching another EC2 instance hence horizontally scaling out in case the main webserver is over loaded with requests and making it resilient. Group name entered “Spidertech-TargetGroup-WebApp” with the HTTP protocol and port 80 selected.
 
@@ -375,28 +382,33 @@ In Figure 45, First Create Target group then select target type for the resource
 
 Figure 45. Create Target Group for Load Balancing
 
+
 In Figure 46, Select IPv4 as the address type, VPC-Spidertech and HTTP1 as the protocol version.
 
 <img width="895" height="424" alt="image" src="https://github.com/user-attachments/assets/275e457d-c8c7-4a76-bde9-25263a1f5c05" />
 
 Figure 46. Create Target Group: IP address Type, VPC & Protocol Version
 
+
  <img width="975" height="506" alt="image" src="https://github.com/user-attachments/assets/552f4e9c-eb5a-4b2c-ac6c-3d9ce49efd5d" />
 
 Figure 47. Create Target Group: Register Targets
 
-4.7.4 Load Balancer
+
+### Load Balancer
 In Figure 48, Name is set to Spidertech-LB and the scheme selected is “Internet- Facing” with IPv4 as the address type.
 
  <img width="975" height="431" alt="image" src="https://github.com/user-attachments/assets/c9bbd507-c6f0-4f22-ba58-f591f666be40" />
 
 Figure 48. Create Load Balancer
 
+
 In Figure 49, VPC-Spidertech is selected for the VPC. Tick both Availability Zones eu-north-1a and eu-north-1b with the corresponding Public Subnets (PublicSubnet1-Spidertech & PublicSubnet2-Spidertech) 
 
  <img width="975" height="441" alt="image" src="https://github.com/user-attachments/assets/3481e62c-ff62-4795-b531-03beead432cb" />
 
 Figure 49. Create Load Balancer: Network Mapping
+
 
 In Figure 50, shows registered target associated with Webserver-SG
 
@@ -408,13 +420,14 @@ Figure 50. Create Load Balancer: Register Targets
 
 
 
-4.7.5 Create a RDS Database read replica
+### Create a RDS Database read replica
 
 In Figure 51, Click “Actions” and select “Create replica”
 
 <img width="940" height="484" alt="image" src="https://github.com/user-attachments/assets/57cd0da6-0287-485e-83b6-865f1bd1e623" />
 
 Figure 51. Create RDS Database Read Replica
+
 
 In Figure 52, the read replica database is created with the same attributes as the main database
 
@@ -423,7 +436,10 @@ In Figure 52, the read replica database is created with the same attributes as t
 Figure 52. Read Replica Running
 
 
-4.7.6 Network Access Control List (NACL)
+
+## Step 7 : Security
+
+### Network Access Control List (NACL)
 
 In Figure 53, Two inbound rules are configured. Rule 100 allows all traffic flow into the Network. Rule * apply to the rest of the rule number that deny traffic into the network. ACL operates on a priority fashion which give the lowest Rule number preference over the next rule number  
 
@@ -439,13 +455,14 @@ In Figure 54, Outbound rule allows traffic within the network to flow outwards.
 Figure 54.NACL Outbound Rules
 
 
-4.7.8 Web Application Firewall (WAF)
+### Web Application Firewall (WAF)
 
 In Figure 55, Region Scope is set to Regional 
 
  <img width="940" height="368" alt="image" src="https://github.com/user-attachments/assets/4a8fcc2c-a43a-4404-b3d4-a86904de0549" />
 
 Figure 55. Choose Regional Scope for Protection Scope
+
 
 In Figure 56, App focus is set to Web for the creating a web ACL protection pack
 
@@ -486,7 +503,7 @@ In Figure 60, Rules are shown in Priority Order
 Figure 60. Rules in Priority Order
 
 
-4.7.9 AWS Certificate Manager
+### AWS Certificate Manager
 
 In Figure 61, An SSL/TLS certificate is requested since we don’t own one
 
@@ -494,11 +511,13 @@ In Figure 61, An SSL/TLS certificate is requested since we don’t own one
 
 Figure 61. Request Certificate
 
+
 In Figure 62, Provide a Domain name “PublicCertificate.spidertechologies.com” and set DNS validation as the method
 
  <img width="865" height="717" alt="image" src="https://github.com/user-attachments/assets/3e0ef4a0-b5c1-4c0b-9eb4-22747775fe73" />
 
 Figure 62. Request Public Certificate
+
 
 In Figure 63, Pending Validation for the requested Certificate
 
@@ -506,7 +525,9 @@ In Figure 63, Pending Validation for the requested Certificate
 
 Figure 63. Certificate Pending Validation
 
-4.7.10 Identity and Access Management (IAM) and Multi-Factor Authentication
+
+### Identity and Access Management (IAM) and Multi-Factor Authentication
+
 In Figure 64, the IAM user is being created, the user name “user1” and password are being set
 
  <img width="940" height="454" alt="image" src="https://github.com/user-attachments/assets/9fb4ee40-dab0-456b-83ef-11374aef7d62" />
@@ -522,13 +543,13 @@ In Figure 65, shows the permission options are set to “attach policies directl
 
 Figure 65: IAM: Set Permissions
 
+
+
 In Figure 66, shows the permission policies that have being selected for the user. 
 
  <img width="940" height="348" alt="image" src="https://github.com/user-attachments/assets/8a0154ff-a6aa-4d04-be1b-663b0dc27b49" />
 
 Figure 66. IAM: Review Permissions
-
-
 
 
 
