@@ -393,10 +393,15 @@ In Figure 48, Name is set to Spidertech-LB and the scheme selected is “Interne
 Figure 48. Create Load Balancer
 
 In Figure 49, VPC-Spidertech is selected for the VPC. Tick both Availability Zones eu-north-1a and eu-north-1b with the corresponding Public Subnets (PublicSubnet1-Spidertech & PublicSubnet2-Spidertech) 
- 
+
+ <img width="975" height="441" alt="image" src="https://github.com/user-attachments/assets/3481e62c-ff62-4795-b531-03beead432cb" />
+
 Figure 49. Create Load Balancer: Network Mapping
+
 In Figure 50, shows registered target associated with Webserver-SG
- 
+
+ <img width="878" height="455" alt="image" src="https://github.com/user-attachments/assets/c1040e39-af90-420a-95f6-879388330325" />
+
 Figure 50. Create Load Balancer: Register Targets
 
 
@@ -407,10 +412,13 @@ Figure 50. Create Load Balancer: Register Targets
 
 In Figure 51, Click “Actions” and select “Create replica”
 
- 
+<img width="940" height="484" alt="image" src="https://github.com/user-attachments/assets/57cd0da6-0287-485e-83b6-865f1bd1e623" />
+
 Figure 51. Create RDS Database Read Replica
 
 In Figure 52, the read replica database is created with the same attributes as the main database
+
+<img width="940" height="264" alt="image" src="https://github.com/user-attachments/assets/8da87143-d19d-484e-bafa-e54b329a1c66" />
  
 Figure 52. Read Replica Running
 
@@ -418,21 +426,31 @@ Figure 52. Read Replica Running
 4.7.6 Network Access Control List (NACL)
 
 In Figure 53, Two inbound rules are configured. Rule 100 allows all traffic flow into the Network. Rule * apply to the rest of the rule number that deny traffic into the network. ACL operates on a priority fashion which give the lowest Rule number preference over the next rule number  
- 
+
+ <img width="940" height="246" alt="image" src="https://github.com/user-attachments/assets/fc9ab41a-1b74-4ada-8678-f73940e6fcb9" />
+
 Figure 53. NACL Inbound Rules
+
 
 In Figure 54, Outbound rule allows traffic within the network to flow outwards.
  
+ <img width="940" height="249" alt="image" src="https://github.com/user-attachments/assets/8fc22879-3fda-44d3-8cec-07b43bd07d4c" />
+
 Figure 54.NACL Outbound Rules
+
 
 4.7.8 Web Application Firewall (WAF)
 
 In Figure 55, Region Scope is set to Regional 
- 
+
+ <img width="940" height="368" alt="image" src="https://github.com/user-attachments/assets/4a8fcc2c-a43a-4404-b3d4-a86904de0549" />
+
 Figure 55. Choose Regional Scope for Protection Scope
 
 In Figure 56, App focus is set to Web for the creating a web ACL protection pack
- 
+
+ <img width="940" height="425" alt="image" src="https://github.com/user-attachments/assets/bd18850e-2f5c-4de2-abe2-6976db85926d" />
+
 Figure 56. Create Protection Pack (Web ACL)
 
 
@@ -442,40 +460,57 @@ Figure 56. Create Protection Pack (Web ACL)
 
 In Figure 57, The resource to be protected is set to Spidertech-Load Balancer.
 
+<img width="940" height="408" alt="image" src="https://github.com/user-attachments/assets/55a360d0-eeba-4c0e-9721-4d7f18603a0b" />
  
 Figure 57. Add Resource
 
+
 In Figure 58, Set rule to inspect “all request”
- 
+
+ <img width="940" height="549" alt="image" src="https://github.com/user-attachments/assets/8c8cba33-d89f-453f-a06b-bebad2c6afbd" />
+
 Figure 58. Add Rules
 
+
 In Figure 59, Rule group contains Rule provided by AWS for specifically WordPress applications and are set to “Block” the exploits paths and commands
- 
+
+<img width="828" height="364" alt="image" src="https://github.com/user-attachments/assets/e11582f5-7ef3-41ef-ada5-9b4395289232" />
+
 Figure 59. Rules Group
 
+
 In Figure 60, Rules are shown in Priority Order
- 
+
+ <img width="923" height="498" alt="image" src="https://github.com/user-attachments/assets/6e990a26-9fd5-4e4d-a157-bca5c8ea9446" />
+
 Figure 60. Rules in Priority Order
 
 
 4.7.9 AWS Certificate Manager
 
 In Figure 61, An SSL/TLS certificate is requested since we don’t own one
- 
+
+ <img width="940" height="255" alt="image" src="https://github.com/user-attachments/assets/bc7aadc5-9127-41e9-be71-3500430a6d46" />
+
 Figure 61. Request Certificate
 
 In Figure 62, Provide a Domain name “PublicCertificate.spidertechologies.com” and set DNS validation as the method
- 
+
+ <img width="865" height="717" alt="image" src="https://github.com/user-attachments/assets/3e0ef4a0-b5c1-4c0b-9eb4-22747775fe73" />
+
 Figure 62. Request Public Certificate
 
 In Figure 63, Pending Validation for the requested Certificate
- 
+
+ <img width="940" height="276" alt="image" src="https://github.com/user-attachments/assets/379f4956-d0ab-4b4e-871e-68907d5d11e2" />
+
 Figure 63. Certificate Pending Validation
 
 4.7.10 Identity and Access Management (IAM) and Multi-Factor Authentication
 In Figure 64, the IAM user is being created, the user name “user1” and password are being set
 
- 
+ <img width="940" height="454" alt="image" src="https://github.com/user-attachments/assets/9fb4ee40-dab0-456b-83ef-11374aef7d62" />
+
 Figure 64. Create IAM User
 
 
@@ -483,12 +518,14 @@ Figure 64. Create IAM User
 
 In Figure 65, shows the permission options are set to “attach policies directly” then the permission policies for the user are selected
 
- 
+ <img width="940" height="357" alt="image" src="https://github.com/user-attachments/assets/a49f87f3-1f56-4f4b-bc61-44e7080dccc4" />
+
 Figure 65: IAM: Set Permissions
 
 In Figure 66, shows the permission policies that have being selected for the user. 
 
- 
+ <img width="940" height="348" alt="image" src="https://github.com/user-attachments/assets/8a0154ff-a6aa-4d04-be1b-663b0dc27b49" />
+
 Figure 66. IAM: Review Permissions
 
 
@@ -498,11 +535,14 @@ Figure 66. IAM: Review Permissions
 
 In Figure 67, shows the user credentials consisting of their console sign-in URL, username and console password.
 
+<img width="940" height="382" alt="image" src="https://github.com/user-attachments/assets/f715f33b-247f-49e3-ba85-50c651f21a7a" />
  
 Figure 67. IAM: Retrieve Credentials
 
 In Figure 68, shows google authenticator, an application that generates a passcode for multi-factor authentication when the credentials in figure 67 are used to sign in.
- 
+
+ <img width="421" height="524" alt="image" src="https://github.com/user-attachments/assets/bed26ef4-9682-4511-989a-11725e02d63d" />
+
 Figure 68. Multi-Factor Authentication
 
 
